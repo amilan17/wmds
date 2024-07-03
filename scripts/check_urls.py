@@ -2,6 +2,7 @@ import copy
 import glob
 import json
 import os
+from pathlib import Path
 import sys
 import unittest
 
@@ -80,14 +81,14 @@ class TestContentsConsistency(unittest.TestCase):
 
         self.assertTrue(rdflib.compare.isomorphic(result, expected),
                         (resourceURL + '\n' +
-                         lbb + inboth.serialize(format='n3').decode("utf-8") +
-                         lbr + inres.serialize(format='n3').decode("utf-8") +
-                         lbe + inexp.serialize(format='n3').decode("utf-8")))
-
+                         lbb + inboth.serialize(format='n3', encoding='utf-8').decode("utf-8") +
+                         lbr + inres.serialize(format='n3', encoding='utf-8').decode("utf-8") +
+                         lbe + inexp.serialize(format='n3', encoding='utf-8').decode("utf-8")))
 
 # Build test cases based on the TTL files within the repository,
 # one test case per file.
 for f in glob.glob('wmdr/**/*.ttl', recursive=True):
+    f = Path(f).as_posix()    
     relf = f.replace('.ttl', '')
     identity = '{}/{}'.format(rooturl, relf)
     resource = '{}/{}'.format(downloadurl, relf)
@@ -122,15 +123,16 @@ for f in glob.glob('wmdr/**/*.ttl', recursive=True):
             assert(expected.status_code == 200)
             expected_rdfgraph = rdflib.Graph()
             expected_rdfgraph.parse(data=expected.text, format='n3')
-            # print(expected)
+            #print(expected)
             result_rdfgraph = rdflib.Graph()
-            # print(identityURI)
+            #print(identityURI)
             result_rdfgraph.parse(ufile, publicID=identityURI, format='n3')
             # if ldp:container with contained entities
             if os.path.exists(identityURI.split(rooturl)[1].lstrip('/')):
                 # add in member relations from tree
                 col_id, = result_rdfgraph.subjects(rdflib.RDF.type, rdflib.namespace.SKOS.Collection)
                 for fname in glob.glob('{}/*.ttl'.format(identityURI.split(rooturl)[1].lstrip('/'))):
+                    fname = Path(fname).as_posix()
                     member_id = rdflib.term.URIRef(u'{}/{}'.format(identityURI, fname.split('/')[-1].split('.ttl')[0]))
                     result_rdfgraph.add((col_id, rdflib.namespace.SKOS.member, member_id))
                     expected_rdfgraph.remove((member_id, None, None))
