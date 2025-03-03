@@ -65,19 +65,19 @@ body:
   - type: textarea
     id: consultations
     attributes:
-      label: Collaborators
-      description: Names of groups or individuals (and affiliation) that were consulted during, or assisted with, the drafting of the proposal.
+      label: Consultations
+      description: Individuals, groups, or organizations that are consulted. Also cite publications or other documents as references.
       placeholder: Enter collaborator details.
+
   - type: textarea
-    id: references
+    id: data-exchange
     attributes:
-      label: References
-      description: Other publications, websites or resources that were reviewed during the drafting of the proposal.
-      placeholder: Enter references reviewed. 
+      label: Data exchange
+      description: Describe plans for data exchange associated with the proposal. 
+      placeholder: For example, identify relevant datasets, metadata platforms, WMO systems
   - type: textarea
     attributes:
       label: Comments
-      description: Other information that may be informative and relevant.
       
 
       
