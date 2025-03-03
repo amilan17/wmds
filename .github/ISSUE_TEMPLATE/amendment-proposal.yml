@@ -45,6 +45,7 @@ body:
       options:
        - label: OSCAR/Surface
        - label: OSCAR/requirements
+       - label: GAWSIS
        - label: Radar/DB
        - label: OceanOPS
        - label: WHOS
@@ -78,19 +79,6 @@ body:
     attributes:
       label: Comments
       description: Other information that may be informative and relevant.
-  - type: textarea
-    id: publication
-    attributes:
-      label: Publication(s)
-      description: Publication title, WMO number, relevant volume, part, section, regulation, provision, paragraph or other such subdivisions of the publication and URL to location in the WMO Codes Registry to which the amendment applies.
-      placeholder: If different from below, enter publication name and location of amendment in the publication.
-      value: "[_Manual on Codes_](https://library.wmo.int/idurl/4/35769) (WMO-No. 306), Volume I.3, [WMO Codes Registry - WMDR](https://codes.wmo.int/wmdr)" 
-  - type: textarea
-    id: validation
-    attributes:
-      label: Validation
-      description: Details of validation, if applicable.  
-      placeholder: Enter if validation was performed. 
       
 
       
