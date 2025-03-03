@@ -6,18 +6,17 @@ body:
     attributes:
       value: The content in this issue, excluding the initial request, will be kept up to date during the drafting of the proposal. Please pay attention to accuracy, spelling and grammar as it may be referenced in an official document for WMO adoption. Please consult the [Guidance on Changing Code Tables](https://github.com/wmo-im/wmds/wiki/Changing-Codetables).
   - type: textarea
-    id: initial-request
+    id: overview
     attributes:
-      label: Initial request
+      label: Introduction
       description: Overview description of the amendment(s) requested. Include as much relevant information possible, such as rationale, purpose, and implementation plans. *This field should only be edited by the requestor.*
-      placeholder: Enter summary of request for amendment(s).
     validations:
       required: true
   - type: textarea
     id: amendment-details
     attributes:
       label: Amendment details 
-      description: Tables with exact changes proposed. Enter TBD if the details are unknown. This content may evolve as decisions are finalized.You may convert CSV to Markdown at https://www.convertcsv.com/csv-to-markdown.htm.
+      description: Tables with exact changes proposed. Do not add descriptive information. Enter TBD if the details are unknown. This content may evolve as decisions are finalized.You may convert CSV to Markdown at https://www.convertcsv.com/csv-to-markdown.htm.
     validations:
       placeholder: Enter amendment details. 
       required: true
